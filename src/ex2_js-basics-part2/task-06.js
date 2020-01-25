@@ -1,23 +1,26 @@
-﻿let input = document.querySelector(".inp1");
+﻿let input = document.querySelector(".inputValue");
 let button = document.querySelector("button");
-let out = document.querySelector(".out1");
+let output = document.querySelector(".outputValue");
 button.onclick = () => {
-    let a = input.value;
-    if (a == 0) {
-        out.innerHTML = "Undefined";
-    } else if (a == 1) {
-        out.innerHTML = "Единица не простое число и не составное";
-    } else if (a == 2) {
-        out.innerHTML = `Число ${a} простое`;
-    } else if (a >= 1000) {
-        out.innerHTML = `Число ${a} больше 1000`;
-    } else if (a <= 1000 && a > 0) {
-        let b = 2;
-        let power = Math.pow(b, a - 1);
-        let x = power % a;
-        let y = 1 % a;
-        if (x == y) {
-            out.innerHTML = `Число ${a} простое`;
-        } else out.innerHTML = `Число ${a} составное`;
-    } else out.innerHTML = `Число ${a} отрицательное`
-}
+    let inputValue = input.value;
+    if (inputValue.length > 0) {
+        if (inputValue == 0) {
+            output.innerHTML = "Ноль не простое число и не составное";
+        } else if (inputValue == 1) {
+            output.innerHTML = "Единица не простое число и не составное";
+        } else if (inputValue == 2) {
+            output.innerHTML = `Число ${inputValue} простое`;
+        } else if (inputValue >= 1000) {
+            output.innerHTML = `Число ${inputValue} не подходит`;
+        } else if (inputValue <= 1000 && inputValue > 0) {
+            let integerNumber = 2;
+            let power = Math.pow(integerNumber, inputValue - 1);
+            let mod1 = power % inputValue;
+            let mod2 = 1 % inputValue;
+            if (mod1 == mod2) {
+                output.innerHTML = `Число ${inputValue} простое`;
+            } else output.innerHTML = `Число ${inputValue} составное`;
+        } else output.innerHTML = `Введенные данные неверны`;
+    }
+    else output.innerHTML = `Введенные данные неверны`;
+} 
